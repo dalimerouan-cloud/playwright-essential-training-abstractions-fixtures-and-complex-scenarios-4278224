@@ -5,7 +5,9 @@ setup("Create customer 01 auth", async ({ page, context }) => {
   const password = "welcome01";
   const customer01AuthFile = ".auth/customer01.json";
 
-  await page.goto("https://practicesoftwaretesting.com/auth/login");
+  await page.goto("https://practicesoftwaretesting.com/auth/login", {
+    waitUntil: "domcontentloaded",
+  });
 
   await page.getByTestId("email").fill(email);
   await page.getByTestId("password").fill(password);
@@ -13,4 +15,5 @@ setup("Create customer 01 auth", async ({ page, context }) => {
 
   await expect(page.getByTestId("nav-menu")).toContainText("Jane Doe");
   await context.storageState({ path: customer01AuthFile });
+  await context.close();
 });

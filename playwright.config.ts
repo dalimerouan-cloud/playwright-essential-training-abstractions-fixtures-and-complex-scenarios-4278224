@@ -31,12 +31,13 @@ export default defineConfig({
     baseURL: "https://practicesoftwaretesting.com",
     testIdAttribute: "data-test",
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: "on",
+    trace: "on-first-retry",
     actionTimeout: 0,
     ignoreHTTPSErrors: true,
     video: "retain-on-failure",
     screenshot: "only-on-failure",
     headless: true,
+    channel: "chrome",
   },
 
   /* Configure projects for major browsers */
@@ -45,11 +46,11 @@ export default defineConfig({
       name: "setup",
       testMatch: /.*\.setup\.ts/,
     },
-    {
-      name: "chromium",
-      dependencies: ["setup"],
-      use: { ...devices["Desktop Chrome"], permissions: ["clipboard-read"] },
-    },
+    //{
+    //  name: "chromium",
+    //  dependencies: ["setup"],
+    //  use: { ...devices["Desktop Chrome"], permissions: ["clipboard-read"] },
+    //},
     // {
     //   name: 'firefox',
     //   dependencies: ["setup"],
@@ -73,14 +74,15 @@ export default defineConfig({
     // },
 
     /* Test against branded browsers. */
-    // {
-    //   name: 'Microsoft Edge',
-    //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    // },
-    // {
-    //   name: 'Google Chrome',
-    //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
-    // },
+    //{
+    //name: "Microsoft Edge",
+    //  use: { ...devices["Desktop Edge"], channel: "msedge" },
+    //},
+    {
+      name: "Google Chrome",
+      dependencies: ["setup"],
+      use: { ...devices["Desktop Chrome"], channel: "chrome" },
+    },
   ],
 
   /* Run your local dev server before starting the tests */
