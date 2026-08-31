@@ -18,6 +18,8 @@ export class LoginPage {
     await this.loginButton.click();
   }
   async goto() {
-    await this.page.goto("https://practicesoftwaretesting.com/");
+    await this.page.goto("https://practicesoftwaretesting.com/", {
+      waitUntil: "domcontentloaded",
+    });
   }
 }
