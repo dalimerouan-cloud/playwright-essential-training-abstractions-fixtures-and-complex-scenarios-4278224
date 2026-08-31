@@ -1,5 +1,31 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
-test('test', async ({ page }) => {
-  // Recording...
+test("test", async ({ page }) => {
+  await page.goto("https://practicesoftwaretesting.com/");
+  await page.getByTestId("nav-sign-in").click();
+  await page.getByTestId("register-link").click();
+  await page.getByTestId("first-name").click();
+  await page.getByTestId("first-name").fill("marven");
+  await page.getByTestId("last-name").click();
+  await page.getByTestId("last-name").fill("teste1");
+  await page.getByTestId("dob").click();
+  await page.getByTestId("dob").fill("2000-05-15");
+  await page.getByTestId("country").selectOption("US");
+  await page.getByTestId("postal_code").click();
+  await page.getByTestId("postal_code").fill("hs3 sds");
+  await page.getByTestId("house_number").click();
+  await page.getByTestId("house_number").fill("42");
+  await page.getByTestId("street").click();
+  await page.getByTestId("street").fill("new jerssy");
+  await page.getByTestId("city").click();
+  await page.getByTestId("city").fill("new");
+  await page.getByTestId("state").click();
+  await page.getByTestId("state").fill("york");
+  await page.getByTestId("phone").click();
+  await page.getByTestId("phone").fill("55555555");
+  await page.getByTestId("email").click();
+  await page.getByTestId("email").fill("dalitest1@gmail.com");
+  await page.getByTestId("password").click();
+  await page.getByTestId("password").fill("*Home@123*");
+  await page.getByTestId("register-submit").click();
 });
