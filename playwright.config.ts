@@ -80,7 +80,7 @@ export default defineConfig({
     //},
     {
       name: "Google Chrome",
-      dependencies: ["setup"],
+      //dependencies: ["setup"],
       use: { ...devices["Desktop Chrome"], channel: "chrome" },
     },
   ],
