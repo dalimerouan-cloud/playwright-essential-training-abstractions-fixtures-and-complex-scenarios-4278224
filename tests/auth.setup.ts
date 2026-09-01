@@ -9,14 +9,9 @@ setup("Create customer 01 auth", async ({ page, context }) => {
   const loginPage = new LoginPage(page);
 
   await loginPage.goto();
-  //await page.goto("await page.goto('https://practicesoftwaretesting.com/');
-  //await expect(page.getByTestId("nav-sign-in")).toBeVisible();
-  //await page.goto("https://practicesoftwaretesting.com/auth/login");
-  //  waitUntil: "domcontentloaded",npx playwright show-report
-  //await page.goto("https://practicesoftwaretesting.com/auth/login");
-  //});
-  await loginPage.login(email, password);
-  //await loginPage.emailInput.fill(email);
+  
+  
+  await loginPage.login(email, password);  //await loginPage.emailInput.fill(email);
   //await loginPage.passwordInput.fill(password);
   //await loginPage.loginButton.click();
 

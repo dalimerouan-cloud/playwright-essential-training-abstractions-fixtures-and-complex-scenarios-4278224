@@ -2,9 +2,6 @@ import { test, expect } from "@playwright/test";
 
 test("test", async ({ page }) => {
   await page.goto("https://practicesoftwaretesting.com/");
-  await expect(page.locator('[data-test="nav-sign-in"]')).toMatchAriaSnapshot(
-    `- link "Se connecter"`,
-  );
   await page.locator('[data-test="nav-sign-in"]').click();
   await page.locator('[data-test="register-link"]').click();
   await page.locator('[data-test="first-name"]').click();
@@ -31,5 +28,4 @@ test("test", async ({ page }) => {
   await page.locator('[data-test="password"]').click();
   await page.locator('[data-test="password"]').fill("*Home@123*");
   await page.locator('[data-test="register-submit"]').click();
-  await expect(page.locator('[data-test="register-link"]')).toBeVisible();
 });

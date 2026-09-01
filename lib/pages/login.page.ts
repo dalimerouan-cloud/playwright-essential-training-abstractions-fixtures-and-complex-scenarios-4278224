@@ -12,14 +12,16 @@ export class LoginPage {
     this.loginButton = page.getByTestId("login-submit");
   }
 
+  async goto() {
+    await this.page.goto("https://practicesoftwaretesting.com/auth/login", {
+      waitUntil: "domcontentloaded",
+    });
+  }
+
   async login(email: string, password: string) {
+    await this.emailInput.waitFor({ state: "visible" });
     await this.emailInput.fill(email);
     await this.passwordInput.fill(password);
     await this.loginButton.click();
-  }
-  async goto() {
-    await this.page.goto("https://practicesoftwaretesting.com/", {
-      waitUntil: "domcontentloaded",
-    });
   }
 }
