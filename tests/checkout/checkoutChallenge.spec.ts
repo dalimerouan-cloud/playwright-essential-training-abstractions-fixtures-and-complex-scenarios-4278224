@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { randomState } from "../../lib/pages/helpers/states";
 
 test.describe("Checkout challenge", async () => {
   test.use({ storageState: ".auth/customer01.json" });
@@ -19,7 +20,7 @@ test.describe("Checkout challenge", async () => {
     ).toHaveCSS("background-color", "rgb(51, 153, 51)");
     await page.getByTestId("street").fill("123 Testing Way");
     await page.getByTestId("city").fill("Sacramento");
-    await page.getByTestId("state").fill("California");
+    await page.getByTestId("state").fill(randomState());
     await page.getByTestId("country").selectOption("US");
     await page.getByTestId("postal_code").fill("98765");
     await page.getByTestId("house_number").fill("7");
