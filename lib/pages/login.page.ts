@@ -13,8 +13,13 @@ export class LoginPage {
   }
 
   async login(email: string, password: string) {
+    await this.emailInput.waitFor({ state: "visible" });
     await this.emailInput.fill(email);
+
+    await this.passwordInput.waitFor({ state: "visible" });
     await this.passwordInput.fill(password);
+
+    await this.loginButton.waitFor({ state: "visible" });
     await this.loginButton.click();
   }
   async goto() {

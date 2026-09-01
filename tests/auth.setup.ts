@@ -12,7 +12,7 @@ setup("Create customer 01 auth", async ({ page, context }) => {
   //await page.goto("await page.goto('https://practicesoftwaretesting.com/');
   await expect(page.getByTestId("nav-sign-in")).toBeVisible();
   await page.goto("https://practicesoftwaretesting.com/auth/login");
-  //  waitUntil: "domcontentloaded",
+  //  waitUntil: "domcontentloaded",npx playwright show-report
   await page.goto("https://practicesoftwaretesting.com/auth/login");
   //});
   await loginPage.login(email, password);
