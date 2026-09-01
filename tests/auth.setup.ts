@@ -9,9 +9,8 @@ setup("Create customer 01 auth", async ({ page, context }) => {
   const loginPage = new LoginPage(page);
 
   await loginPage.goto();
-  
-  
-  await loginPage.login(email, password);  //await loginPage.emailInput.fill(email);
+
+  await loginPage.login(email, password); //await loginPage.emailInput.fill(email);
   //await loginPage.passwordInput.fill(password);
   //await loginPage.loginButton.click();
 
