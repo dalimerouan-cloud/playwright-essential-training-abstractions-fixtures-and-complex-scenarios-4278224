@@ -21,6 +21,10 @@ export async function registerUser(email: string, password: string) {
       },
     },
   );
-  expect(response.status()).toBe(200);
-  return response.status();
+  const body = await response.json();
+  console.log("Register response:", response.status(), body);
+  expect(response.status(), `Register failed: ${JSON.stringify(body)}`).toBe(
+    200,
+  );
+  return body;
 }
