@@ -10,10 +10,10 @@ setup("Create customer 01 auth", async ({ page, context }) => {
 
   await loginPage.goto();
   //await page.goto("await page.goto('https://practicesoftwaretesting.com/');
-  await expect(page.getByTestId("nav-sign-in")).toBeVisible();
-  await page.goto("https://practicesoftwaretesting.com/auth/login");
+  //await expect(page.getByTestId("nav-sign-in")).toBeVisible();
+  //await page.goto("https://practicesoftwaretesting.com/auth/login");
   //  waitUntil: "domcontentloaded",npx playwright show-report
-  await page.goto("https://practicesoftwaretesting.com/auth/login");
+  //await page.goto("https://practicesoftwaretesting.com/auth/login");
   //});
   await loginPage.login(email, password);
   //await loginPage.emailInput.fill(email);
