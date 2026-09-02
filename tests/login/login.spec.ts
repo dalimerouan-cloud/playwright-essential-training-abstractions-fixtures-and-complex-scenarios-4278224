@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { LoginPage } from "@pages/login.page";
-import { registerUser } from "../../lib/pages/datafactory/register";
+import { registerUser } from "@datafactory/register";
 
 test("login without page object", async ({ page }) => {
   await page.goto("https://practicesoftwaretesting.com/auth/login");
