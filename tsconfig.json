@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "paths": {
+      "@datafactory/*": ["lib/pages/datafactory/*"],
+      "@helpers/*": ["lib/pages/helpers/*"],
+      "@pages/*": ["lib/pages/*"]
+    }
+  },
+  "include": ["**/*.ts"]
+}
