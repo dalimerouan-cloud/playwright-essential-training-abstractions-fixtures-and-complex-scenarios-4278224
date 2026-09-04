@@ -9,3 +9,5 @@ export const test = baseTest.extend<MyPage>({
     await use(new LoginPage(page));
   },
 });
+
+export { expect } from "@playwright/test";
