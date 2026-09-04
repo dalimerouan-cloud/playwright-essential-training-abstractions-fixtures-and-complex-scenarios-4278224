@@ -7,7 +7,8 @@
     "paths": {
       "@datafactory/*": ["lib/pages/datafactory/*"],
       "@helpers/*": ["lib/pages/helpers/*"],
-      "@pages/*": ["lib/pages/*"]
+      "@pages/*": ["lib/pages/*"],
+      "@fixtures*": ["lib/pages/fixtures/*"]
     }
   },
   "include": ["**/*.ts"]

@@ -1,6 +1,7 @@
-import { test, expect } from "@playwright/test";
+import { expect } from "@playwright/test";
 import { LoginPage } from "@pages/login.page";
 import { registerUser } from "@datafactory/register";
+import { test } from "@fixtures/pages.fixtures";
 
 test("login without page object", async ({ page }) => {
   await page.goto("https://practicesoftwaretesting.com/auth/login");
@@ -22,6 +23,19 @@ test("login with newly registered user", async ({ page }) => {
   const email = `dalitest_${Date.now()}@gmail.com`;
   const password = "*Home@123*";
   const loginPage = new LoginPage(page);
+
+  await registerUser(email, password);
+  await loginPage.goto();
+
+  await loginPage.login(email, password); //await loginPage.emailInput.fill(email);
+  //await loginPage.passwordInput.fill(password);
+  //await loginPage.loginButton.click();
+
+  await expect(page.getByTestId("nav-menu")).toContainText("marven2 dali2");
+});
+test("login with fixture", async ({ page, loginPage }) => {
+  const email = `dalitest_${Date.now()}@gmail.com`;
+  const password = "*Home@123*";
 
   await registerUser(email, password);
   await loginPage.goto();
