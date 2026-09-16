@@ -1,6 +1,6 @@
 import { LoginPage } from "@pages/login.page";
 import { registerUser } from "@datafactory/register";
-import { test, expect } from "@fixtures/pages.fixtures";
+import { test, expect } from "@fixturesbase.fixture";
 
 test("login without page object", async ({ page }) => {
   await page.goto("https://practicesoftwaretesting.com/auth/login");
@@ -18,7 +18,7 @@ test("login without page object", async ({ page }) => {
   );
 });
 
-test("login with newly registered user", async ({ page }) => {
+test("login with newly registered user", async ({ page, accountPage }) => {
   const email = `dalitest_${Date.now()}@gmail.com`;
   const password = "*Home@123*";
   const loginPage = new LoginPage(page);
@@ -30,9 +30,9 @@ test("login with newly registered user", async ({ page }) => {
   //await loginPage.passwordInput.fill(password);
   //await loginPage.loginButton.click();
 
-  await expect(page.getByTestId("nav-menu")).toContainText("marven2 dali2");
+  await expect(accountPage.navMenu).toContainText("marven2 dali2");
 });
-test("login with fixture", async ({ page, loginPage }) => {
+test("login with fixture", async ({ loginPage, accountPage, pageConsole }) => {
   const email = `dalitest_${Date.now()}@gmail.com`;
   const password = "*Home@123*";
 
@@ -43,5 +43,5 @@ test("login with fixture", async ({ page, loginPage }) => {
   //await loginPage.passwordInput.fill(password);
   //await loginPage.loginButton.click();
 
-  await expect(page.getByTestId("nav-menu")).toContainText("marven2 dali2");
+  await expect(accountPage.navMenu).toContainText("marven2 dali2");
 });
