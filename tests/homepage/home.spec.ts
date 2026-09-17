@@ -64,22 +64,28 @@ test.describe("Home page customer 01 auth", () => {
 
   test("validate product is visible in UI from API", async ({ page }) => {
     let products: any;
+    let resolveProducts: (value: any) => void; //resolve the product fetch and gurantees the fatch parse hase completed
+    const productsPromise = new Promise(
+      (resolve) => (resolveProducts = resolve),
+    );
     await test.step("intercept/ products", async () => {
       await page.route(
         "https://api.practicesoftwaretesting.com/products**",
         async (route) => {
           const response = await route.fetch();
           products = await response.json();
+          resolveProducts(products);
           route.continue();
         },
       );
     });
     await page.goto("/");
     await expect(page.locator(".skeleton").first()).not.toBeVisible();
+    await productsPromise;
     const productGrid = page.locator(".col-md-9"); //ng-star-inserted
     for (const product of products.data) {
       await expect(productGrid).toContainText(product.name);
-      await expect(productGrid).toContainText(product.price);
+      await expect(productGrid).toContainText(product.price.toString());
     }
   });
 });
